@@ -1,0 +1,11 @@
+<h1>Список задач</h1>
+<a href="{% url 'add_task' %}">Добавить задачу</a>
+<ul>
+    {% for task in tasks %}
+        <li>
+            <span style="text-decoration: {% if task.is_completed %}line-through{% endif %};">{{ task.text }}</span>
+            <a href="{% url 'complete_task' task.id %}">✔️</a>
+            <a href="{% url 'delete_task' task.id %}">❌</a>
+        </li>
+    {% endfor %}
+</ul>
